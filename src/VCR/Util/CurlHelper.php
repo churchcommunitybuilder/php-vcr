@@ -115,7 +115,7 @@ class CurlHelper
                 $info =  mb_strlen(HttpUtil::formatAsStatusWithHeadersString($response), 'ISO-8859-1');
                 break;
             default:
-                $info = $response->getCurlInfo(self::$curlInfoList[$option]);
+                $info = $response->getCurlInfo($option);
                 break;
         }
 
