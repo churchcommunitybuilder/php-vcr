@@ -105,9 +105,6 @@ class CurlHelper
             case CURLINFO_HTTP_CODE:
                 $info = (int)$response->getStatusCode();
                 break;
-            case CURLINFO_CONTENT_TYPE:
-                $info = $response->getHeader('Content-Type');
-                break;
             case CURLINFO_SIZE_DOWNLOAD:
                 $info = $response->getHeader('Content-Length');
                 break;
@@ -115,7 +112,7 @@ class CurlHelper
                 $info =  mb_strlen(HttpUtil::formatAsStatusWithHeadersString($response), 'ISO-8859-1');
                 break;
             default:
-                $info = $response->getCurlInfo($option);
+                $info = $response->getCurlInfo(self::$curlInfoList[$option]);
                 break;
         }
 
